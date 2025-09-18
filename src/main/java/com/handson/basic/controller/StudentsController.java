@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -54,5 +55,11 @@ public class StudentsController {
         if (dbStudent.isEmpty()) throw new RuntimeException("Student with id: " + id + " not found");
         studentService.delete(dbStudent.get());
         return new ResponseEntity<>("DELETED", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/highSat", method = RequestMethod.GET)
+    public ResponseEntity<?> getHighSatStudents(@RequestParam Integer sat)
+    {
+        return new ResponseEntity<>(studentService.getStudentWithSatHigherThan(sat), HttpStatus.OK);
     }
 }
