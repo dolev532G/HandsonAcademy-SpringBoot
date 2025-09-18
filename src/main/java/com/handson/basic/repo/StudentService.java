@@ -35,7 +35,7 @@ public class StudentService {
         repository.delete(student);
     }
     public List<Student> getStudentWithSatHigherThan(Integer sat) {
-        return repository.findAllBySatScoreGreaterThan(sat);
+        return repository.findAllBySatScoreGreaterThan(sat); // check
     }
 
 }
