@@ -29,6 +29,15 @@ public class StudentOut {
 
     private String fullname;
     private Date birthdate;
+    private Double avgscore;
+
+    public Double getAvgscore() {
+        return avgscore;
+    }
+
+    public void setAvgscore(Double avgscore) {
+        this.avgscore = avgscore;
+    }
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("birthdate")

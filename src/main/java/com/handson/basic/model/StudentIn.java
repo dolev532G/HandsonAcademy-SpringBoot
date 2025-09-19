@@ -4,9 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.handson.basic.util.Dates;
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.joda.time.LocalDate;
 
 import static com.handson.basic.model.Student.StudentBuilder.aStudent;
@@ -37,6 +42,10 @@ public class StudentIn implements Serializable {
                 .phone(phone)
                 .build();
     }
+
+
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Collection<StudentGrade> studentGrades = new ArrayList<>();
 
     public LocalDate getBirthDate() {
         return birthDate;
