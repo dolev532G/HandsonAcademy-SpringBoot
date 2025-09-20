@@ -73,7 +73,7 @@ class StudentsControllerTest {
         c.givenStudents(10, sc);
         sc.smsAll("hi");
         Thread.sleep(1000);
-        verify(smsService, atLeastOnce()).send(any(),any());
+        verify(smsService, atLeastOnce()).send(any());
     }
 
     @Test
